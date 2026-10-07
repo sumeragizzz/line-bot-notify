@@ -66,7 +66,8 @@ app.post("/callback", async (context) => {
 				}),
 			),
 		);
-	} catch {
+	} catch (error) {
+		console.error("LINE reply failed", error instanceof Error ? error.message : error);
 		return context.json({ error: "Failed to reply through LINE" }, 502);
 	}
 
